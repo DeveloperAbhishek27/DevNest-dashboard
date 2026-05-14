@@ -10,6 +10,23 @@ body {
   padding: 0;
 }
 
+.Toastify__toast {
+  min-height: auto !important;
+}
+
+@media (min-width: 1240px) {
+  .Toastify__toast {
+    max-width: auto !important;
+    margin: 20px 10px 0px 0px !important;
+  }
+}
+@media (max-width: 640px) {
+  .Toastify__toast {
+    max-width: 280px !important;
+    margin: 20px 10px 0px 0px !important;
+  }
+}
+
 @layer components {
   .main-bg {
     @apply bg-white dark:bg-homeBg transition-colors duration-300;

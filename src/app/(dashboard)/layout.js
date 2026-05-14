@@ -39,7 +39,7 @@ export default function DashboardLayout({ children }) {
         <main
           className={`p-4 sm:p-6 transition-all duration-200
 
-          ml-[80px]
+          ml-[66px]
           ${collapsed ? "lg:ml-[90px]" : "lg:ml-[280px]"}
           `}
         >

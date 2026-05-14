@@ -161,27 +161,50 @@ const RegisterForm = () => {
       {/* HOME LINK */}
       <Link
         href="/"
-        className="absolute top-6 left-6 flex  bg-brand px-4 rounded-2xl py-1 items-center gap-2 text-white hover:text-white transition-all"
+        className="
+    absolute
+    top-6
+    left-6
+
+    h-11
+    w-11
+
+    flex
+    items-center
+    justify-center
+
+    rounded-2xl
+
+    bg-white/10
+    backdrop-blur-xl
+
+    border
+    border-white/10
+
+    text-white
+
+    hover:bg-brand
+    hover:scale-105
+
+    transition-all
+    duration-300
+  "
       >
-        <ArrowLeft size={18} />
-        Home
+        <ArrowLeft size={20} />
       </Link>
 
       <main className="w-full grid lg:pt-0 pt-14 grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* LEFT CONTENT */}
-        <div className="text-white">
-          <p className="uppercase tracking-[6px] text-brand text-sm mb-5">
-            Developer Community
-          </p>
-
+        <div className="text-white pt-10">
           <h1 className="text-5xl fade-in-up lg:text-7xl font-black leading-tight tracking-tight">
-            Start Your
-            <span className="block text-brand">Journey.</span>
+            Manage Your
+            <span className="block text-brand">Workspace.</span>
           </h1>
 
           <p className="mt-8 text-lg fade-in-up-soft leading-9 text-gray-300 max-w-xl">
-            Join CodeSphere and connect with developers around the world. Share
-            projects, learn new technologies, and build your future together
+            Sign in to your personal dashboard to manage tasks, organize keep
+            notes, update your profile, and stay productive in one secure
+            workspace.
           </p>
         </div>
 
@@ -192,7 +215,7 @@ const RegisterForm = () => {
           animate="visible"
           className="w-full max-w-xl "
         >
-          <form onSubmit={handleSubmit} className="space-y-6 p-8">
+          <form onSubmit={handleSubmit} className="space-y-6 p-2 sm:p-8">
             {/* NAME */}
             <div>
               <div className="relative">

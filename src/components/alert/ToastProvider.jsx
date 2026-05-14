@@ -16,6 +16,11 @@ export default function ToastProvider({ children }) {
         pauseOnHover
         draggable
         theme="dark"
+        toastStyle={{
+          maxWidth: "280px",
+          minHeight: "auto",
+          padding: 0,
+        }}
       />
     </>
   );

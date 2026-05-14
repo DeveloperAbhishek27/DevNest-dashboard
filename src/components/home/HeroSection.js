@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
 
+import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, LayoutDashboard } from "lucide-react";
+
+const MotionLink = motion(Link);
 
 const HeroSection = () => {
   return (
@@ -52,7 +57,7 @@ const HeroSection = () => {
           max-w-6xl
           mx-auto
           w-full
-          pt-24
+          pt-32
           lg:pt-10
 
           grid
@@ -104,7 +109,9 @@ const HeroSection = () => {
               gap-5
             "
           >
-            <Link
+            <MotionLink
+              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.01 }}
               href="/register"
               className="
                 flex
@@ -115,7 +122,7 @@ const HeroSection = () => {
                 px-8
                 py-4
 
-                rounded-2xl
+                rounded
 
                 bg-brand
                 text-white
@@ -133,37 +140,32 @@ const HeroSection = () => {
             >
               Create Account
               <ArrowRight size={20} />
-            </Link>
+            </MotionLink>
 
-            <Link
+            <MotionLink
+              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.01 }}
               href="/login"
               className="
-                px-8
-                py-4
-
-                rounded-2xl
-
-                text-center
-                font-semibold
-
-                border-2
-                border-black/10
-                dark:border-white/10 dark:border-brand dark:text-brand
-
-                bg-black/5
-                dark:bg-white/5
-
-                hover:bg-black/10
-                dark:hover:bg-white/10
-
-                backdrop-blur-xl
-
-                transition-all
-                duration-300
-              "
+    px-8
+    py-4
+    rounded
+    text-center
+    font-semibold
+    border-2
+    border-black/10
+     dark:border-brand dark:text-brand
+    bg-black/5
+    dark:bg-white/5
+    hover:bg-black/10
+    dark:hover:bg-white/10
+    text-brand
+    transition-all
+    duration-300
+  "
             >
               Login
-            </Link>
+            </MotionLink>
           </div>
         </div>
 
@@ -197,7 +199,7 @@ const HeroSection = () => {
             <div
               className="
                 grid
-                grid-cols-2
+                sm:grid-cols-2
                 gap-5
                 mt-8
               "
@@ -287,7 +289,7 @@ const HeroSection = () => {
                 items-center
                 justify-center
 
-                rounded-2xl
+                rounded
 
                 bg-brand
                 text-white

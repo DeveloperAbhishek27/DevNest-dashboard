@@ -9,6 +9,8 @@ const baseStyle = {
   fontWeight: "500",
   color: "#fff",
   backdropFilter: "blur(10px)",
+  width: "100%",
+  wordBreak: "break-word",
 };
 
 export const successToast = (msg) => {

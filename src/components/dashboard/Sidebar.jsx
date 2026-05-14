@@ -67,14 +67,14 @@ const DashboardSidebar = ({ handleLogout, collapsed, setCollapsed }) => {
         initial="hidden"
         animate="visible"
         className={`fixed top-0 left-0 z-50 h-screen bg-white
-dark:bg-homeBg border-r border-homeBg/20 dark:border-white/10 backdrop-blur-2xl p-6 flex flex-col justify-between overflow-hidden
+dark:bg-homeBg border-r border-homeBg/20 dark:border-white/10 flex flex-col justify-between overflow-hidden
 
 transition-[width,transform]
 duration-150
 ease-out
 will-change-transform
 
-${collapsed ? "w-[85px]" : "w-[280px]"}
+${collapsed ? "w-[65px] p-4" : "w-[280px] p-6"}
 
 ${open ? "translate-x-0" : "-translate-x-full"}
 
@@ -114,7 +114,7 @@ lg:translate-x-0
 
             <button
               onClick={() => setCollapsed(!collapsed)}
-              className="flex p-3 rounded-xl bg-homeBg dark:bg-white/10 border border-white/10 items-center justify-center text-white dark-hover:bg-brand/20 "
+              className="flex p-3 rounded bg-homeBg dark:bg-white/10 border border-white/10 items-center justify-center text-white dark-hover:bg-brand/20 "
             >
               <PanelLeftClose size={18} />
             </button>
@@ -137,19 +137,18 @@ lg:translate-x-0
                   href={item.href}
                   className={`group relative flex items-center  transition-all duration-300
 
-        ${collapsed ? "justify-center mx-auto w-14 h-14 pr-4  " : "gap-4 dark:bg-white/15 bg-homeBg/10 px-3 rounded-3xl py-3  "}
+        ${collapsed ? "justify-center mx-auto w-14 h-14 pr-6  " : "gap-4 dark:bg-white/15 bg-homeBg/10 px-3 rounded py-3  "}
         ${
           pathname === item.href ? "text-brand" : "text-black dark:text-white"
         } `}
                 >
-                  {/* ICON */}
                   <div
                     className={`relative z-10 flex items-center justify-center
   transition-all duration-300
 
-  ${collapsed ? "p-3" : "w-11 h-11"}
+  ${collapsed ? "p-2" : "w-11 h-11"}
 
-  rounded-2xl
+  rounded
 
   bg-homeBg dark:bg-[#18181b]
 
@@ -174,7 +173,7 @@ lg:translate-x-0
 
     ${collapsed ? "p-1" : "w-11 h-11"}
 
-    rounded-2xl
+    rounded
 
     bg-homeBg
     dark:bg-[#18181b]
@@ -222,9 +221,9 @@ lg:translate-x-0
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleLogout}
-          className={`relative z-10 flex items-center rounded-2xl bg-homeBg dark:bg-brand/30 hover:bg-brand  border border-red-500/20 text-white font-medium
+          className={` absolute bottom-10 left-3  flex items-center   rounded bg-homeBg dark:bg-brand/30 hover:bg-brand  border border-red-500/20 text-white font-medium
 
-          ${collapsed ? "justify-center py-4" : "justify-center gap-3 py-3"}
+          ${collapsed ? "justify-center w-11 h-11  " : "justify-center  w-60 gap-3 py-3"}
           `}
         >
           <LogOut size={20} />

@@ -73,25 +73,47 @@ const LoginForm = () => {
     <section className="min-h-screen px-6 py-10 lg:px-16 flex items-center justify-center">
       <Link
         href="/"
-        className="absolute top-6 left-6 flex  bg-brand px-4 rounded-2xl py-1 items-center gap-2 text-white hover:text-white transition-all"
-      >
-        <ArrowLeft size={18} />
-        Home
-      </Link>
-      <main className="w-full grid  lg:pt-0 pt-14  grid-cols-1 lg:grid-cols-2 gap-16 justify-center items-center">
-        <div className="text-white">
-          <p className="uppercase tracking-[6px] text-brand text-sm mb-5">
-            Welcome Back{" "}
-          </p>
+        className="
+    absolute
+    top-6
+    left-6
 
+    h-11
+    w-11
+
+    flex
+    items-center
+    justify-center
+
+    rounded-2xl
+
+    bg-white/10
+    backdrop-blur-xl
+
+    border
+    border-white/10
+
+    text-white
+
+    hover:bg-brand
+    hover:scale-105
+
+    transition-all
+    duration-300
+  "
+      >
+        <ArrowLeft size={20} />
+      </Link>
+      <main className="w-full grid  lg:pt-0 pt-14 grid-cols-1 lg:grid-cols-2 gap-16 justify-center items-center">
+        <div className="text-white">
           <h1 className="text-5xl fade-in-up lg:text-7xl font-black leading-tight tracking-tight">
-            Continue Your
-            <span className="block text-brand">Journey.</span>
+            Access Your
+            <span className="block text-brand">Dashboard.</span>
           </h1>
 
           <p className="mt-8 text-lg fade-in-up-soft leading-9 text-gray-300 max-w-xl">
-            Login to your CodeSphere account and continue building, learning,
-            and connecting with developers worldwide
+            Login to manage your tasks, keep notes, profile, and everything
+            inside your personal workspace.
           </p>
         </div>
 
@@ -100,7 +122,7 @@ const LoginForm = () => {
           variants={fadeInUp}
           initial="hidden"
           animate="visible"
-          className="w-full max-w-xl p-8"
+          className="w-full max-w-xl p-2 sm:p-8"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* EMAIL */}

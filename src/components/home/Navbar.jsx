@@ -85,7 +85,7 @@ const Navbar = () => {
               dark:text-white
             "
           >
-            CodeSphere
+            DevNest
           </h2>
         </Link>
 
