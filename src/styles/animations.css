@@ -1,0 +1,64 @@
+.fade-in-up {
+  animation: fadeInUp 0.9s ease-out forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.8s ease forwards;
+}
+
+/* Paragraph / Subheading Animation */
+.fade-in-up-soft {
+  animation: fadeInUpSoft 0.8s ease-out forwards;
+}
+
+/* Keyframes */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUpSoft {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
