@@ -60,7 +60,7 @@ const OTPVerification = ({ otp: initialOTP, formData }) => {
 
       setLoading(true);
 
-      const response = await api.post("/api/auth/verify-otp", {
+      const response = await api.post("/auth/verify-otp", {
         ...formData,
         otp: enteredOTP.toString(),
       });

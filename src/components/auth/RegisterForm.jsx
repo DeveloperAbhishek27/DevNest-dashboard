@@ -128,7 +128,7 @@ const RegisterForm = () => {
     if (!isValid) return;
 
     try {
-      const response = await api.post("/api/auth/send-otp", {
+      const response = await api.post("/auth/send-otp", {
         email: formData.email,
         mobile: formData.mobile,
       });
@@ -176,7 +176,7 @@ const RegisterForm = () => {
     rounded-2xl
 
     bg-white/10
-    backdrop-blur-xl
+    backdrop-blur-sm
 
     border
     border-white/10
