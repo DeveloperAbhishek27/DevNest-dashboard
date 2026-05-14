@@ -14,7 +14,7 @@ const useCountries = () => {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await api.get("/api/countries");
+        const response = await api.get("/countries");
         console.log("countries state:", countries);
         setCountries(response.data);
       } catch (err) {
