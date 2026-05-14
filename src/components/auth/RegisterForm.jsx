@@ -128,7 +128,7 @@ const RegisterForm = () => {
     if (!isValid) return;
 
     try {
-      const response = await api.post("/auth/send-otp", {
+      const response = await api.post("/api/auth/send-otp", {
         email: formData.email,
         mobile: formData.mobile,
       });
