@@ -6,7 +6,15 @@ import { motion } from "framer-motion";
 
 import { usePathname } from "next/navigation";
 
-import { LayoutDashboard, User, NotebookPen, LogOut, X } from "lucide-react";
+import {
+  LayoutDashboard,
+  User,
+  NotebookPen,
+  Gamepad2,
+  Bot,
+  LogOut,
+  X,
+} from "lucide-react";
 
 import { fadeInUp, staggerContainer } from "@/animations";
 
@@ -40,6 +48,16 @@ const DashboardSidebar = ({
       title: "Keep Notes",
       icon: <NotebookPen size={20} />,
       href: "/notes",
+    },
+    {
+      title: "Mini Games",
+      icon: <Gamepad2 size={20} />,
+      href: "/games",
+    },
+    {
+      title: "Dev AI",
+      icon: <Bot size={20} />,
+      href: "/dev-ai",
     },
   ];
 
@@ -86,9 +104,7 @@ const DashboardSidebar = ({
 
           overflow-hidden
 
-          transition-all
-          duration-300
-          ease-in-out
+       
 
           ${collapsed ? " hidden sm:flex lg:w-[75px] px-3 py-5" : "w-[280px] px-5 py-6"}
 
@@ -213,7 +229,7 @@ const DashboardSidebar = ({
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="mt-16 space-y-4"
+            className="mt-4 space-y-4"
           >
             {navLinks.map((item, index) => (
               <motion.div
@@ -243,7 +259,7 @@ const DashboardSidebar = ({
                     ${
                       collapsed
                         ? "justify-center mx-auto w-14 h-14"
-                        : "gap-4 px-3 py-3 rounded-xl bg-homeBg/10 dark:bg-white/10"
+                        : "gap-4 px-3 py-2 rounded-xl bg-homeBg/10 dark:bg-white/10"
                     }
 
                     ${
