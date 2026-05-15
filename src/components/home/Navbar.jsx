@@ -4,25 +4,32 @@ import Link from "next/link";
 
 import ThemeToggle from "../ui/ThemeToggle";
 
-import { Code2, Menu, X } from "lucide-react";
+import { Code2, Menu, X, House, UserPlus, LogIn } from "lucide-react";
 
 import { useState } from "react";
 
+import { usePathname } from "next/navigation";
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+
+  const pathname = usePathname();
 
   const navLinks = [
     {
       name: "Home",
       path: "/",
+      icon: <House size={18} />,
     },
     {
       name: "Register",
       path: "/register",
+      icon: <UserPlus size={18} />,
     },
     {
       name: "Login",
       path: "/login",
+      icon: <LogIn size={18} />,
     },
   ];
 
@@ -50,8 +57,6 @@ const Navbar = () => {
           flex
           items-center
           justify-between
-
-         
         "
       >
         {/* LOGO */}
@@ -91,42 +96,56 @@ const Navbar = () => {
 
         {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-5">
-          <div className="flex gap-6 pr-4 items-center">
-            {navLinks.map((link, index) => (
-              <Link
-                key={index}
-                href={link.path}
-                className="
-                  relative
+          <div className="flex gap-3 pr-4 items-center">
+            {navLinks.map((link, index) => {
+              const isActive = pathname === link.path;
 
-                  text-black
-                  dark:text-white
+              return (
+                <Link
+                  key={index}
+                  href={link.path}
+                  className={`
+                    relative
 
-                  font-medium
+                    flex
+                    items-center
+                    gap-2
 
-                  hover:text-brand
+                    px-4
+                    py-2
 
-                  transition-all
-                  duration-300
+                    rounded-xl
 
-                  after:absolute
-                  after:left-0
-                  after:-bottom-1
+                    font-medium
 
-                  after:h-[1.5px]
-                  after:w-0
+                    transition-all
+                    duration-300
 
-                  after:bg-brand
+                    ${
+                      isActive
+                        ? `
+                          bg-brand
+                          text-white
+                          shadow-lg
+                        `
+                        : `
+                          text-black
+                          dark:text-white
 
-                  after:transition-all
-                  after:duration-300
+                          hover:bg-black/5
+                          dark:hover:bg-white/10
 
-                  hover:after:w-full
-                "
-              >
-                {link.name}
-              </Link>
-            ))}
+                          hover:text-brand
+                        `
+                    }
+                  `}
+                >
+                  {link.icon}
+
+                  <span>{link.name}</span>
+                </Link>
+              );
+            })}
           </div>
 
           <ThemeToggle />
@@ -174,27 +193,54 @@ const Navbar = () => {
             p-6
           "
         >
-          <div className="flex flex-col gap-5">
-            {navLinks.map((link, index) => (
-              <Link
-                key={index}
-                href={link.path}
-                onClick={() => setOpen(false)}
-                className="
-                  text-black
-                  dark:text-white
+          <div className="flex flex-col gap-4">
+            {navLinks.map((link, index) => {
+              const isActive = pathname === link.path;
 
-                  hover:text-brand
+              return (
+                <Link
+                  key={index}
+                  href={link.path}
+                  onClick={() => setOpen(false)}
+                  className={`
+                    flex
+                    items-center
+                    gap-3
 
-                  font-medium
+                    px-4
+                    py-3
 
-                  transition-all
-                  duration-300
-                "
-              >
-                {link.name}
-              </Link>
-            ))}
+                    rounded-2xl
+
+                    font-medium
+
+                    transition-all
+                    duration-300
+
+                    ${
+                      isActive
+                        ? `
+                          bg-brand
+                          text-white
+                        `
+                        : `
+                          text-black
+                          dark:text-white
+
+                          hover:bg-black/5
+                          dark:hover:bg-white/10
+
+                          hover:text-brand
+                        `
+                    }
+                  `}
+                >
+                  {link.icon}
+
+                  <span>{link.name}</span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}

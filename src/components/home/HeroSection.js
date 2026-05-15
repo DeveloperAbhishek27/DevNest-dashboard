@@ -152,7 +152,7 @@ const HeroSection = () => {
               flex-col
               sm:flex-row
 
-              items-center sm:justify-start justify-center
+              items-center lg:justify-start justify-center
               lg:items-start
 
               gap-4
