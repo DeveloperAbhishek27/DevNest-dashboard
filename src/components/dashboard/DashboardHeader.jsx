@@ -8,7 +8,13 @@ import ThemeToggle from "../ui/ThemeToggle";
 
 import { useAuth } from "@/context/AuthContext";
 
-const DashboardHeader = ({ handleLogout, collapsed, setCollapsed }) => {
+const DashboardHeader = ({
+  handleLogout,
+  collapsed,
+  setCollapsed,
+  open,
+  setOpen,
+}) => {
   const { user } = useAuth();
 
   const initial = user?.name?.charAt(0)?.toUpperCase() || "U";

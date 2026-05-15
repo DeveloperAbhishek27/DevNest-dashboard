@@ -20,7 +20,9 @@ export default function DashboardLayout({ children }) {
     setOpen(false);
   }, []);
 
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 1024 : false,
+  );
 
   const handleLogout = () => {
     logout();
@@ -53,6 +55,7 @@ export default function DashboardLayout({ children }) {
             collapsed={collapsed}
             setCollapsed={setCollapsed}
             setOpen={setOpen}
+            open={open}
           />
 
           <div className="mt-10">{children}</div>
