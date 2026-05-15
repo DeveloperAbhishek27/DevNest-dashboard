@@ -51,7 +51,7 @@ const Navbar = () => {
           items-center
           justify-between
 
-          transition-all duration-300
+         
         "
       >
         {/* LOGO */}

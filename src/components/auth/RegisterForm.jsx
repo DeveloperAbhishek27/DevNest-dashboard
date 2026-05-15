@@ -209,12 +209,7 @@ const RegisterForm = () => {
         </div>
 
         {/* FORM */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="w-full max-w-xl "
-        >
+        <div className="w-full fade-in-up   max-w-xl ">
           <form onSubmit={handleSubmit} className="space-y-6 p-2 sm:p-8">
             {/* NAME */}
             <div>
@@ -355,9 +350,9 @@ const RegisterForm = () => {
             <div className="pt-4">
               <motion.button
                 whileTap={{ scale: 0.98 }}
-                whileHover={{ y: -2 }}
+                whileHover={{ scale: 1.02 }}
                 type="submit"
-                className="w-full bg-brand py-4 rounded font-semibold text-white shadow-lg shadow-brand/30"
+                className="w-full bg-brand py-4 rounded font-semibold text-white shadow"
               >
                 Create Account
               </motion.button>
@@ -374,7 +369,7 @@ const RegisterForm = () => {
               </Link>
             </p>
           </form>
-        </motion.div>
+        </div>
       </main>
     </section>
   );

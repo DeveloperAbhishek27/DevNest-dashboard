@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
@@ -13,8 +13,12 @@ import { useAuth } from "@/context/AuthContext";
 
 export default function DashboardLayout({ children }) {
   const router = useRouter();
+  const { logout } = useAuth();
+  const [open, setOpen] = useState(false);
 
-  const { user, logout } = useAuth();
+  useEffect(() => {
+    setOpen(false);
+  }, []);
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -31,19 +35,25 @@ export default function DashboardLayout({ children }) {
         <DashboardSidebar
           handleLogout={handleLogout}
           collapsed={collapsed}
-          user={user}
           setCollapsed={setCollapsed}
+          open={open}
+          setOpen={setOpen}
         />
 
         {/* MAIN */}
         <main
-          className={`p-4 sm:p-6 transition-all duration-200
+          className={`p-6 transition-all duration-200
 
-          ml-[66px]
-          ${collapsed ? "lg:ml-[90px]" : "lg:ml-[280px]"}
+         sm:ml-[66px]
+          lg:${collapsed ? "ml-[90px]" : "ml-[280px]"}
           `}
         >
-          <DashboardHeader user={user} handleLogout={handleLogout} />
+          <DashboardHeader
+            handleLogout={handleLogout}
+            collapsed={collapsed}
+            setCollapsed={setCollapsed}
+            setOpen={setOpen}
+          />
 
           <div className="mt-10">{children}</div>
         </main>

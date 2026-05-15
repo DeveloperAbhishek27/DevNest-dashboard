@@ -1,5 +1,5 @@
 "use client";
-
+import "./countryScroll.css";
 import { useEffect, useRef, useState } from "react";
 
 import { Globe, ChevronDown, Search } from "lucide-react";
@@ -78,7 +78,7 @@ const CountrySelect = ({ value, onChange }) => {
           </div>
 
           {/* OPTIONS */}
-          <div className="max-h-[200px] overflow-y-auto">
+          <div className="max-h-[200px] overflow-y-auto  custom-scrollbar">
             {loading ? (
               <div className="p-4 text-gray-700 text-sm">
                 Loading countries...

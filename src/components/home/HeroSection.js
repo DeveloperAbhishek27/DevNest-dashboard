@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { motion } from "framer-motion";
+
 import { ArrowRight, ShieldCheck, LayoutDashboard } from "lucide-react";
 
 const MotionLink = motion(Link);
@@ -11,13 +12,18 @@ const HeroSection = () => {
   return (
     <section
       className="
-        min-h-screen
         relative
+        min-h-screen
+
         flex
         items-center
+
         overflow-hidden
-        px-6
+
+        px-4
+        sm:px-6
         lg:px-16
+
         transition-all
         duration-300
 
@@ -34,18 +40,29 @@ const HeroSection = () => {
         dark:text-white
       "
     >
-      {/* BLUR EFFECTS */}
+      {/* BLUR EFFECT */}
       <div
         className="
           absolute
-          top-[-150px]
-          right-[-120px]
-          w-[450px]
-          h-[450px]
+          top-[-120px]
+          right-[-100px]
+
+          w-[280px]
+          h-[280px]
+
+          sm:w-[380px]
+          sm:h-[380px]
+
+          lg:w-[450px]
+          lg:h-[450px]
+
           rounded-full
+
           bg-brand/20
           dark:bg-brand/30
-          blur-[120px]
+
+          blur-[100px]
+          sm:blur-[120px]
         "
       />
 
@@ -54,29 +71,47 @@ const HeroSection = () => {
         className="
           relative
           z-10
-          max-w-6xl
-          mx-auto
+
           w-full
-          pt-32
-          lg:pt-10
+          max-w-6xl
+
+          mx-auto
+
+          
+          pb-16
+
+          pt-28
+        
+          lg:pb-0
 
           grid
+          grid-cols-1
           lg:grid-cols-2
-          gap-16
+
+          gap-14
+          lg:gap-16
+
           items-center
         "
       >
-        {/* LEFT SIDE */}
-        <div>
+        {/* LEFT */}
+        <div className="text-center sm:mt-0 mt-6 lg:text-left">
           {/* HEADING */}
           <h1
             className="
-              mt-8
-              text-5xl
+              mt-4
+
+              text-4xl
+              sm:text-5xl
+              md:text-6xl
               lg:text-7xl
+
               font-black
+
               leading-tight
               tracking-tight
+
+              fade-in-up
             "
           >
             Your Developer
@@ -86,10 +121,19 @@ const HeroSection = () => {
           {/* DESCRIPTION */}
           <p
             className="
-              mt-7
+              mt-6
+
               max-w-2xl
-              text-lg
-              leading-9
+              mx-auto
+              lg:mx-0
+
+              text-base
+              sm:text-lg
+
+              leading-8
+              sm:leading-9
+
+              fade-in-up-soft
 
               text-gray-600
               dark:text-gray-400
@@ -102,37 +146,49 @@ const HeroSection = () => {
           {/* BUTTONS */}
           <div
             className="
-              mt-10
+              mt-9
+
               flex
               flex-col
               sm:flex-row
-              gap-5
+
+              items-center sm:justify-start justify-center
+              lg:items-start
+
+              gap-4
+              sm:gap-5
             "
           >
             <MotionLink
               whileTap={{ scale: 0.98 }}
-              whileHover={{ scale: 1.01 }}
+              whileHover={{ scale: 1.05 }}
               href="/register"
               className="
+                w-full
+                sm:w-auto
+
                 flex
                 items-center
                 justify-center
                 gap-2
 
-                px-8
-                py-4
+                px-7
+                sm:px-8
 
-                rounded
+                py-3.5
+                sm:py-4
+
+                rounded-3xl
 
                 bg-brand
                 text-white
 
+                text-sm
+                sm:text-base
+
                 font-semibold
 
                 shadow-lg
-
-                hover:opacity-90
-                hover:scale-105
 
                 transition-all
                 duration-300
@@ -144,71 +200,89 @@ const HeroSection = () => {
 
             <MotionLink
               whileTap={{ scale: 0.98 }}
-              whileHover={{ scale: 1.01 }}
+              whileHover={{ scale: 1.05 }}
               href="/login"
               className="
-    px-8
-    py-4
-    rounded
-    text-center
-    font-semibold
-    border-2
-    border-black/10
-     dark:border-brand dark:text-brand
-    bg-black/5
-    dark:bg-white/5
-    hover:bg-black/10
-    dark:hover:bg-white/10
-    text-brand
-    transition-all
-    duration-300
-  "
+                w-full
+                sm:w-auto
+
+                px-7
+                sm:px-8
+
+                py-3.5
+                sm:py-4
+
+                rounded-3xl
+
+                text-center
+
+                text-sm
+                sm:text-base
+
+                font-semibold
+
+                border-2
+                border-brand
+
+                bg-black/5
+                dark:bg-white/5
+
+                hover:bg-black/10
+                dark:hover:bg-white/10
+
+                text-brand
+                dark:text-brand
+
+                transition-all
+                duration-300
+              "
             >
               Login
             </MotionLink>
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
-        <div className="lg:flex justify-center">
+        {/* RIGHT */}
+        <div className="flex justify-center">
           <div
             className="
               w-full
               max-w-md
 
-              p-7
+              p-5
+              sm:p-7
 
-              rounded-[32px]
+              rounded-3xl
+
+              fade-in-up
 
               bg-white/60
-              dark:bg-white/5
+              dark:bg-white/10
 
               border
               border-black/10
               dark:border-white/10
 
-              backdrop-blur-2xl
-
               shadow-2xl
-
-              transition-all
-              duration-300
             "
           >
             {/* FEATURE CARDS */}
             <div
               className="
                 grid
+                grid-cols-1
                 sm:grid-cols-2
-                gap-5
-                mt-8
+
+                gap-4
+                sm:gap-5
               "
             >
               {/* CARD */}
               <div
                 className="
                   p-5
-                  rounded-2xl
+
+                  rounded-3xl
 
                   bg-white/70
                   dark:bg-homeBg
@@ -216,18 +290,25 @@ const HeroSection = () => {
                   border
                   border-black/10
                   dark:border-white/10
-
-                  transition-all
-                  duration-300
                 "
               >
                 <LayoutDashboard size={28} className="text-brand" />
 
-                <h3 className="mt-4 font-bold text-lg">Dashboard</h3>
+                <h3
+                  className="
+                    mt-4
+
+                    text-lg
+                    font-bold
+                  "
+                >
+                  Dashboard
+                </h3>
 
                 <p
                   className="
                     mt-2
+
                     text-sm
                     leading-6
 
@@ -243,7 +324,8 @@ const HeroSection = () => {
               <div
                 className="
                   p-5
-                  rounded-2xl
+
+                  rounded-3xl
 
                   bg-white/70
                   dark:bg-homeBg
@@ -251,20 +333,25 @@ const HeroSection = () => {
                   border
                   border-black/10
                   dark:border-white/10
-
-               
-
-                  transition-all
-                  duration-300
                 "
               >
                 <ShieldCheck size={28} className="text-brand" />
 
-                <h3 className="mt-4 font-bold text-lg">Secure Auth</h3>
+                <h3
+                  className="
+                    mt-4
+
+                    text-lg
+                    font-bold
+                  "
+                >
+                  Secure Auth
+                </h3>
 
                 <p
                   className="
                     mt-2
+
                     text-sm
                     leading-6
 
@@ -278,30 +365,41 @@ const HeroSection = () => {
             </div>
 
             {/* BUTTON */}
-            <Link
+            <MotionLink
+              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.03 }}
               href="/login"
               className="
                 w-full
-                mt-7
-                py-4
+
+                mt-6
+                sm:mt-7
+
+                py-3.5
+                sm:py-4
 
                 flex
                 items-center
                 justify-center
 
-                rounded
+                rounded-3xl
 
                 bg-brand
                 text-white
 
+                text-sm
+                sm:text-base
+
                 font-semibold
 
-                shadow-lg transition-all
+                shadow-lg
+
+                transition-all
                 duration-300
               "
             >
               Go To Dashboard
-            </Link>
+            </MotionLink>
           </div>
         </div>
       </div>

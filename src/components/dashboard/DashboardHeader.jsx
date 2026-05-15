@@ -2,48 +2,55 @@
 
 import { motion } from "framer-motion";
 
-import { LogOut } from "lucide-react";
+import { LogOut, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 import ThemeToggle from "../ui/ThemeToggle";
+
 import { useAuth } from "@/context/AuthContext";
 
-const DashboardHeader = ({ handleLogout }) => {
+const DashboardHeader = ({ handleLogout, collapsed, setCollapsed }) => {
   const { user } = useAuth();
+
   const initial = user?.name?.charAt(0)?.toUpperCase() || "U";
 
   return (
     <header
       className="
-    sticky top-6  z-20
+        sticky
+        top-6
+        z-20
 
-    w-full
-    h-20
+        w-full
+        h-20
 
-    px-6
+        px-4
+        sm:px-6
 
-    rounded-3xl
+        rounded-3xl
 
-    border
-    border-black/10
-    dark:border-white/10
+        border
+        border-black/10
+        dark:border-white/10
 
-    bg-white/80
-    dark:bg-white/5
+        bg-white/80
+        dark:bg-white/5
 
-    backdrop-blur-[2px]
+        backdrop-blur-[6px]
 
-    flex
-    items-center
-    justify-between
+        flex
+        items-center
+        justify-between
 
-    shadow-lg
-  "
+        shadow-lg
+      "
     >
+      {/* BACKGROUND BLUR */}
       <div
         className="
           absolute
           bottom-0
           left-1/2
+          -translate-x-1/2
 
           w-40
           h-40
@@ -52,11 +59,47 @@ const DashboardHeader = ({ handleLogout }) => {
 
           blur-[100px]
           rounded-full
+
+          pointer-events-none
         "
       />
 
-      {/* LEFT SIDE */}
-      <div className="relative z-10 flex items-center gap-4">
+      <div className="relative z-10 flex items-center gap-3">
+        {/* DESKTOP COLLAPSE BUTTON */}
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className="
+            flex
+
+            w-11
+            h-11
+
+            rounded-xl
+
+            bg-black/5
+            dark:bg-white/10
+
+            border
+            border-black/10
+            dark:border-white/10
+
+            items-center
+            justify-center
+
+            text-black
+            dark:text-white
+
+            transition-all
+            duration-300
+          "
+        >
+          {collapsed ? (
+            <PanelLeftOpen size={18} />
+          ) : (
+            <PanelLeftClose size={18} />
+          )}
+        </button>
+
         {/* USER AVATAR */}
         <motion.div
           whileHover={{ scale: 1.05 }}
@@ -68,7 +111,7 @@ const DashboardHeader = ({ handleLogout }) => {
 
             border-2
             border-dotted
-            border-brand
+            border-brand sm:hidden 
 
             bg-black/5
             dark:bg-white/10

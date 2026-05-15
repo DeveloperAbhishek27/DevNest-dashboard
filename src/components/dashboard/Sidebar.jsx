@@ -3,25 +3,24 @@
 import Link from "next/link";
 
 import { motion } from "framer-motion";
+
 import { usePathname } from "next/navigation";
 
-import {
-  LayoutDashboard,
-  User,
-  NotebookPen,
-  LogOut,
-  Menu,
-  PanelLeftClose,
-} from "lucide-react";
-
-import { useState } from "react";
+import { LayoutDashboard, User, NotebookPen, LogOut, X } from "lucide-react";
 
 import { fadeInUp, staggerContainer } from "@/animations";
+
 import { useAuth } from "@/context/AuthContext";
 
-const DashboardSidebar = ({ handleLogout, collapsed, setCollapsed }) => {
+const DashboardSidebar = ({
+  handleLogout,
+  setCollapsed,
+  collapsed,
+  open,
+  setOpen,
+}) => {
   const { user } = useAuth();
-  const [open, setOpen] = useState(false);
+
   const pathname = usePathname();
 
   const navLinks = [
@@ -46,78 +45,168 @@ const DashboardSidebar = ({ handleLogout, collapsed, setCollapsed }) => {
 
   return (
     <>
-      {/* MOBILE MENU BUTTON */}
-      <button
-        onClick={() => setOpen(true)}
-        className="lg:hidden fixed top-5 left-5 z-50 w-11 h-11 rounded-xl bg-white/10 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white"
-      >
-        <Menu size={22} />
-      </button>
-
       {/* OVERLAY */}
       {open && (
         <div
           onClick={() => setOpen(false)}
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+          className="
+            fixed
+            inset-0
+            bg-black/50
+            backdrop-blur-sm
+            z-40
+            lg:hidden
+          "
         />
       )}
 
+      {/* SIDEBAR */}
       <motion.aside
         variants={fadeInUp}
         initial="hidden"
         animate="visible"
-        className={`fixed top-0 left-0 z-50 h-screen bg-white
-dark:bg-homeBg border-r border-homeBg/20 dark:border-white/10 flex flex-col justify-between overflow-hidden
+        className={`
+          fixed
+          top-0
+          left-0
+          z-50
 
-transition-[width,transform]
-duration-150
-ease-out
-will-change-transform
+          h-screen
 
-${collapsed ? "w-[65px] p-4" : "w-[280px] p-6"}
+          bg-white
+          dark:bg-homeBg
 
-${open ? "translate-x-0" : "-translate-x-full"}
+          border-r
+          border-homeBg/20
+          dark:border-white/10
 
-lg:translate-x-0
-`}
+          flex
+          flex-col
+          justify-between
+
+          overflow-hidden
+
+          transition-all
+          duration-300
+          ease-in-out
+          
+
+          ${collapsed ? " hidden sm:flex lg:w-[75px] px-3 py-5" : "w-[280px] px-5 py-6"}
+
+          ${open ? "translate-x-0" : "-translate-x-full"}
+
+          lg:translate-x-0
+        `}
       >
         {/* TOP */}
         <div className="relative z-10">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="
+                        w-12
+                        h-12
+
+                        rounded-full
+
+                        border-2
+                        border-dotted
+                        border-brand
+
+                        bg-black/5
+                        dark:bg-white/10
+
+                        backdrop-blur-xl
+
+                        flex
+                        items-center
+                        justify-center
+
+                        text-base
+                        font-bold
+
+                        text-black
+                        dark:text-white
+
+                        shadow-lg
+                      "
+          >
+            {user?.name?.charAt(0)?.toUpperCase() || "U"}
+          </motion.div>
+          {/* HEADER */}
           <div
             className={`flex items-center ${
               collapsed ? "justify-center" : "justify-between"
             }`}
           >
             {!collapsed && (
-              <div className=" relative ">
+              <div className="relative w-full">
+                {/* BG BLOB */}
                 <div
                   className="
-      absolute inset-0
-      bg-cover -left-24 -z-20 -top-56 bg-center h-[400px] w-[300px] bg-no-repeat
-      opacity-30
-      
-      pointer-events-none
-    "
+                    absolute
+                    inset-0
+
+                    bg-cover
+                    bg-center
+                    bg-no-repeat
+
+                    -left-24
+                    -top-56
+                    -z-20
+
+                    h-[400px]
+                    w-[300px]
+
+                    opacity-30
+
+                    pointer-events-none
+                  "
                   style={{
                     backgroundImage: "url('/Blob/blob-shape.svg')",
                   }}
                 />
-                <h1 className="text-2xl   z-20 font-black text-brand dark:text-white tracking-wide">
-                  {user?.name}
-                </h1>
 
-                <p className="text-xs mt-1 text-gray-700 font-semibold dark:text-gray-400">
-                  Welcome back
-                </p>
+                <div className="flex relative items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div>
+                      <h1 className="text-lg font-black text-brand dark:text-white tracking-wide">
+                        {user?.name}
+                      </h1>
+
+                      <p className="text-xs mt-1 text-gray-700 dark:text-gray-400 font-medium">
+                        Welcome back
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* CLOSE BUTTON */}
+                  <button
+                    onClick={() => {
+                      setOpen(false);
+                      setCollapsed(true);
+                    }}
+                    className={` 
+                      lg:hidden
+                      flex 
+                      items-center
+                      justify-center absolute -top-10 right-0
+                      w-10
+                      h-10
+                      rounded-xl
+                      bg-black/5
+                      dark:bg-white/10
+                      border
+                      border-black/10
+                      dark:border-white/10
+                      text-black
+                      dark:text-white
+                    `}
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
               </div>
             )}
-
-            <button
-              onClick={() => setCollapsed(!collapsed)}
-              className="flex p-3 rounded bg-homeBg dark:bg-white/10 border border-white/10 items-center justify-center text-white dark-hover:bg-brand/20 "
-            >
-              <PanelLeftClose size={18} />
-            </button>
           </div>
 
           {/* NAVIGATION */}
@@ -125,7 +214,7 @@ lg:translate-x-0
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="mt-20 space-y-4"
+            className="mt-16 space-y-4"
           >
             {navLinks.map((item, index) => (
               <motion.div
@@ -135,63 +224,70 @@ lg:translate-x-0
               >
                 <Link
                   href={item.href}
-                  className={`group relative flex items-center  transition-all duration-300
+                  onClick={() => setOpen(false)}
+                  className={`
+                    group
+                    relative
 
-        ${collapsed ? "justify-center mx-auto w-14 h-14 pr-6  " : "gap-4 dark:bg-white/15 bg-homeBg/10 px-3 rounded py-3  "}
-        ${
-          pathname === item.href ? "text-brand" : "text-black dark:text-white"
-        } `}
+                    flex
+                    items-center
+
+                    transition-all
+                    duration-300
+
+                    ${
+                      collapsed
+                        ? "justify-center mx-auto w-14 h-14"
+                        : "gap-4 px-3 py-3 rounded-xl bg-homeBg/10 dark:bg-white/10"
+                    }
+
+                    ${
+                      pathname === item.href
+                        ? "text-brand"
+                        : "text-black dark:text-white"
+                    }
+                  `}
                 >
+                  {/* ICON */}
                   <div
-                    className={`relative z-10 flex items-center justify-center
-  transition-all duration-300
+                    className="
+                      relative
+                      z-10
 
-  ${collapsed ? "p-2" : "w-11 h-11"}
+                      flex
+                      items-center
+                      justify-center
 
-  rounded
+                      w-11
+                      h-11
 
-  bg-homeBg dark:bg-[#18181b]
+                      rounded-xl
 
-  border border-white/[0.03]
+                      bg-homeBg
+                      dark:bg-[#18181b]
 
-  dark:shadow-[inset_-1px_-1px_1px_rgba(255,255,255,0.05),inset_1px_1px_2px_rgba(0,0,0,0.9),0_6px_14px_rgba(0,0,0,0.45),0_-2px_6px_rgba(255,255,255,0.03)]
+                      border
+                      border-white/[0.03]
 
-  
-  `}
+                      dark:shadow-[inset_-1px_-1px_1px_rgba(255,255,255,0.05),inset_1px_1px_2px_rgba(0,0,0,0.9),0_6px_14px_rgba(0,0,0,0.45)]
+                    "
                   >
-                    {/* ICON */}
                     <div
                       className={`
-    relative
-    z-10
-    flex
-    items-center
-    justify-center
+                        transition-all
+                        duration-300
 
-    transition-all
-    duration-300
+                        ${
+                          pathname === item.href
+                            ? "text-brand"
+                            : "text-white dark:text-white"
+                        }
 
-    ${collapsed ? "p-1" : "w-11 h-11"}
-
-    rounded
-
-    bg-homeBg
-    dark:bg-[#18181b]
-  `}
+                        group-hover:text-brand
+                        group-hover:scale-110
+                      `}
                     >
-                      <div
-                        className={`
-      transition-all
-      duration-300
-
-      ${pathname === item.href ? "text-brand" : "text-white dark:text-white"}
-
-      group-hover:text-brand
-      group-hover:scale-110
-    `}
-                      >
-                        {item.icon}
-                      </div>
+                      {item.icon}
                     </div>
                   </div>
 
@@ -200,12 +296,16 @@ lg:translate-x-0
                     <div className="relative z-10 flex flex-col">
                       <span
                         className={`
-    text-sm
-    font-semibold
-    tracking-wide
+                          text-sm
+                          font-semibold
+                          tracking-wide
 
-    ${pathname === item.href ? "text-brand" : "text-black dark:text-white"}
-  `}
+                          ${
+                            pathname === item.href
+                              ? "text-brand"
+                              : "text-black dark:text-white"
+                          }
+                        `}
                       >
                         {item.title}
                       </span>
@@ -216,14 +316,32 @@ lg:translate-x-0
             ))}
           </motion.div>
         </div>
-
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleLogout}
-          className={` absolute bottom-10 left-3  flex items-center   rounded bg-homeBg dark:bg-brand/30 hover:bg-brand  border border-red-500/20 text-white font-medium
+          className={`
+            flex
+            items-center
+            justify-center
 
-          ${collapsed ? "justify-center w-11 h-11  " : "justify-center  w-60 gap-3 py-3"}
+            rounded-xl
+
+            bg-homeBg
+            dark:bg-brand/30
+
+            hover:bg-brand
+
+            border
+            border-red-500/20
+
+            text-white
+            font-medium
+
+            transition-all
+            duration-300
+
+            ${collapsed ? "w-12 h-12 mx-auto" : "w-full gap-3 py-3"}
           `}
         >
           <LogOut size={20} />

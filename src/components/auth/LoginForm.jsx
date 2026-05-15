@@ -118,12 +118,7 @@ const LoginForm = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="w-full max-w-xl p-2 sm:p-8"
-        >
+        <div className="w-full fade-in-up  max-w-xl p-2 sm:p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* EMAIL */}
             <div>
@@ -164,7 +159,7 @@ const LoginForm = () => {
             <div className="pt-6">
               <motion.button
                 whileTap={{ scale: 0.98 }}
-                whileHover={{ scale: 1.01 }}
+                whileHover={{ scale: 1.02 }}
                 type="submit"
                 disabled={loading}
                 className="w-full bg-brand py-4 rounded font-semibold text-white"
@@ -184,7 +179,7 @@ const LoginForm = () => {
               </Link>
             </p>
           </form>
-        </motion.div>
+        </div>
       </main>
       <ForgotPasswordModal open={openForgot} setOpen={setOpenForgot} />
     </section>

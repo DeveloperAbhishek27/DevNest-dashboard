@@ -22,7 +22,7 @@ const ProfileCard = ({ setUser }) => {
           dark:from-white/5 dark:to-white/0
           
           shadow-lg  dark:shadow-2xl dark:border-white/10
-          p-8
+           p-6 sm:p-8
           transition-all
         "
       >
@@ -31,13 +31,14 @@ const ProfileCard = ({ setUser }) => {
           onClick={() => setOpenEdit(true)}
           className="
             absolute
-            top-6 right-6
-            w-11 h-11
-            rounded-2xl
+            -top-4 -right-4
+            sm:top-6 sm:right-6
+            w-14 h-14
+            rounded-3xl
             bg-brand
             text-white
             flex items-center justify-center
-            shadow-lg shadow-brand/30
+            shadow-lg
             hover:scale-105
             active:scale-95
             transition-all
@@ -47,11 +48,11 @@ const ProfileCard = ({ setUser }) => {
         </button>
 
         {/* HEADER */}
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-5 sm:gap-10">
           <div
             className="
               p-5
-              rounded-2xl
+              rounded-3xl
               bg-gradient-to-br from-brand/20 to-brand/5
               flex items-center justify-center
               text-brand

@@ -28,26 +28,81 @@ const NotesPage = () => {
   return (
     <div className="p-6 text-white">
       {/* HEADER */}
-      <div className="flex items-center justify-between mb-8">
+      <div
+        className="
+    flex
+    flex-col
+    sm:flex-row
+
+    sm:items-center
+    sm:justify-between
+
+    gap-4
+
+    mb-8
+  "
+      >
+        {/* LEFT */}
         <div>
-          <h1 className="text-3xl text-brand dark:text-white font-bold">
+          <h1
+            className="
+        text-2xl
+        sm:text-3xl
+        md:text-4xl
+
+        font-bold
+
+        text-brand
+        dark:text-white
+      "
+          >
             Notes
           </h1>
-          <p className="text-sm text-gray-400 mt-1">
+
+          <p
+            className="
+        text-sm
+        sm:text-base
+
+        text-gray-400
+
+        mt-1
+      "
+          >
             Save your ideas & thoughts
           </p>
         </div>
 
+        {/* BUTTON */}
         <button
           onClick={() => setOpenCreate(true)}
           className="
-            px-5 py-2.5
-            bg-brand
-            text-white
-            rounded-xl
-            font-medium
-            shadow-md
-          "
+      w-full
+      sm:w-auto
+
+      px-5
+      sm:px-6
+
+      py-3
+
+      rounded-2xl
+
+      bg-brand
+
+      text-sm
+      sm:text-base
+
+      text-white
+      font-semibold
+
+      shadow-lg
+
+      hover:opacity-90
+      active:scale-[0.98]
+
+      transition-all
+      duration-300
+    "
         >
           + Create Note
         </button>
@@ -66,9 +121,7 @@ const NotesPage = () => {
       ) : notes?.length === 0 ? (
         <div className="text-center mt-20 text-gray-400">
           <h2 className="text-xl font-semibold">No Notes Yet</h2>
-          <p className="text-sm mt-2">
-            Create your first note to get started ✨
-          </p>
+          <p className="text-sm mt-2">Create your first note to get started</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
