@@ -89,7 +89,6 @@ const DashboardSidebar = ({
           transition-all
           duration-300
           ease-in-out
-          
 
           ${collapsed ? " hidden sm:flex lg:w-[75px] px-3 py-5" : "w-[280px] px-5 py-6"}
 
@@ -224,7 +223,13 @@ const DashboardSidebar = ({
               >
                 <Link
                   href={item.href}
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    setOpen(false);
+
+                    if (window.innerWidth < 1024) {
+                      setCollapsed(true);
+                    }
+                  }}
                   className={`
                     group
                     relative

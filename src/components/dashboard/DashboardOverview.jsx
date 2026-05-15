@@ -49,7 +49,7 @@ const DashboardOverview = () => {
               text-3xl
               sm:text-4xl
               lg:text-5xl
-               sm:flex gap-6
+               sm:flex gap-6 fade-in-up
 flex-row
           
           lg:items-center
@@ -80,7 +80,7 @@ flex-row
               leading-7
 
               text-gray-600
-              dark:text-gray-400
+              dark:text-gray-400 fade-in-up
             "
           >
             Track your notes, manage your workflow, and access your developer
@@ -107,7 +107,7 @@ flex-row
           whileHover={{ y: -6 }}
           transition={{ duration: 0.25 }}
           className="
-            relative
+            relative fade-in-up
 
             overflow-hidden
 
@@ -219,7 +219,7 @@ flex-row
           whileHover={{ y: -6 }}
           transition={{ duration: 0.25 }}
           className="
-            rounded-3xl
+            rounded-3xl fade-in-up
 
             border
             border-black/10
@@ -286,7 +286,7 @@ flex-row
           whileHover={{ y: -6 }}
           transition={{ duration: 0.25 }}
           className="
-            rounded-3xl
+            rounded-3xl fade-in-up
 
             border
             border-black/10
