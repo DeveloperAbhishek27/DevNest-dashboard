@@ -99,20 +99,22 @@ const HeroSection = () => {
           {/* HEADING */}
           <h1
             className="
-              mt-4
+    mt-4
 
-              text-4xl
-              sm:text-5xl
-              md:text-6xl
-              lg:text-7xl
+    text-5xl
+    sm:text-5xl
+    md:text-6xl
+    lg:text-7xl
 
-              font-black
+     font-black
 
-              leading-tight
-              tracking-tight
+    leading-[1.25]
+    tracking-[-2px]
+    drop-shadow-[0_1px_10px_rgba(0,0,0,0.25)]
 
-              fade-in-up
-            "
+
+    fade-in-up
+  "
           >
             Your Developer
             <span className="block text-brand">Dashboard.</span>
