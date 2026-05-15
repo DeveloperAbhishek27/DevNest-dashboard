@@ -101,16 +101,15 @@ const HeroSection = () => {
             className="
     mt-4
 
-    text-5xl
+    text-[3.5rem]
     sm:text-5xl
     md:text-6xl
     lg:text-7xl
-
+ drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)]
      font-black
 
     leading-[1.25]
     tracking-[-2px]
-    drop-shadow-[0_1px_10px_rgba(0,0,0,0.25)]
 
 
     fade-in-up
