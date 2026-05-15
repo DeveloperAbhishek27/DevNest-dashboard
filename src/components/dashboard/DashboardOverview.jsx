@@ -63,7 +63,7 @@ flex-row
             "
           >
             Welcome Back,
-            <span className="block mt-1 text-brand  uppercase">
+            <span className="block mt-1 text-brand  text-4xl font-extrabold uppercase">
               {user?.name}
             </span>
           </h1>
