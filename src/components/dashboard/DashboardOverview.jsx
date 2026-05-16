@@ -88,9 +88,7 @@ const DashboardOverview = () => {
         <div>
           <h1
             className="
-              text-4xl
-              
-              sm:text-5xl
+             text-5xl
               sm:flex
               gap-6
               fade-in-up
@@ -103,7 +101,7 @@ const DashboardOverview = () => {
             "
           >
             Welcome Back,
-            <span className="block mt-1 text-brand sm:text-4xl text-5xl font-black uppercase">
+            <span className="block mt-1 text-brand sm:text-4xl text-6xl font-black uppercase">
               {user?.name}
             </span>
           </h1>
@@ -142,7 +140,8 @@ const DashboardOverview = () => {
             grid-cols-4
             sm:grid-cols-4
             lg:grid-cols-4
-            gap-4
+            gap-2
+            sm:gap-4
           "
         >
           {quickLinks.map((item, index) => (
