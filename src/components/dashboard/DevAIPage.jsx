@@ -88,7 +88,7 @@ export default function DevAIPage() {
                 }`}
               >
                 <div
-                  className={`flex items-end gap-2 max-w-[78%] ${
+                  className={`flex items-end gap-2 sm:max-w-[75%] max-w-[95%] ${
                     msg.role === "user" ? "flex-row-reverse" : "flex-row"
                   }`}
                 >
