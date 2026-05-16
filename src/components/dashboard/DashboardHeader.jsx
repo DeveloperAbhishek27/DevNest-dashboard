@@ -3,18 +3,12 @@
 import { motion } from "framer-motion";
 
 import { LogOut, PanelLeftClose, PanelLeftOpen } from "lucide-react";
-
+import { fadeInUp, staggerContainer } from "@/animations";
 import ThemeToggle from "../ui/ThemeToggle";
 
 import { useAuth } from "@/context/AuthContext";
 
-const DashboardHeader = ({
-  handleLogout,
-  collapsed,
-  setCollapsed,
-  open,
-  setOpen,
-}) => {
+const DashboardHeader = ({ handleLogout, collapsed, setCollapsed }) => {
   const { user } = useAuth();
 
   const initial = user?.name?.charAt(0)?.toUpperCase() || "U";
@@ -105,40 +99,54 @@ const DashboardHeader = ({
             <PanelLeftClose size={18} />
           )}
         </button>
+        <div className="relative z-10">
+          <div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className={`
+      overflow-hidden sm:hidden 
+      border-2
+      border-dotted
+      border-brand/70 bg-white/70
+     dark:bg-white/10 shadow-2xl
+      rounded-full
+      flex-shrink-0
 
-        {/* USER AVATAR */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="
-            w-12
-            h-12
-
-            rounded-full
-
-            border-2
-            border-dotted
-            border-brand sm:hidden 
-
-            bg-black/5
-            dark:bg-white/10
-
-            backdrop-blur-xl
-
-            flex
-            items-center
-            justify-center
-
-            text-base
-            font-bold
-
-            text-black
-            dark:text-white
-
-            shadow-lg
-          "
-        >
-          {initial}
-        </motion.div>
+      ${collapsed ? "w-12 h-12" : "w-20 h-20"}
+    `}
+            >
+              {user?.profilePicture ? (
+                <img
+                  src={user.profilePicture}
+                  alt="profile"
+                  className="
+          w-full
+          h-full
+          object-cover
+        "
+                />
+              ) : (
+                <div
+                  className="
+          w-full
+          h-full
+          bg-black/5
+          dark:bg-white/10
+          flex
+          items-center
+          justify-center
+          text-black
+          dark:text-white
+          font-bold
+          text-xl
+        "
+                >
+                  {user?.name?.charAt(0)?.toUpperCase() || "U"}
+                </div>
+              )}
+            </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* RIGHT SIDE */}

@@ -49,12 +49,11 @@ const ProfileCard = ({ setUser }) => {
           <Pencil size={18} />
         </button>
 
-        {/* HEADER */}
         <div className="flex items-center gap-5 sm:gap-10">
           <div className="relative">
             <div
               className="
-      w-24 p-2 h-24
+      w-24  h-24
       sm:w-32 sm:h-32
       overflow-hidden
       rounded-full
@@ -75,7 +74,7 @@ const ProfileCard = ({ setUser }) => {
                 <img
                   src={user.profilePicture}
                   alt="profile"
-                  className="w-full h-full object-cover"
+                  className="w-full  object-cover"
                 />
               ) : (
                 <span>{user?.name?.charAt(0)?.toUpperCase()}</span>

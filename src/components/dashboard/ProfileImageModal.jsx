@@ -65,9 +65,11 @@ const ProfileImageModal = ({ open, setOpen, image }) => {
                 src={image}
                 alt="profile"
                 className="
-                  max-w-[90vw]
-                  max-h-[80vh]
-                  object-cover
+
+               
+                  max-w-[60vw]
+                  max-h-[60vh]
+                  object-contain
                   rounded-2xl
                 "
               />
