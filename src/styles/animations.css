@@ -16,6 +16,14 @@
 }
 
 /* Keyframes */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.4);
+  border-radius: 20px;
+}
 
 @keyframes fadeInUp {
   from {

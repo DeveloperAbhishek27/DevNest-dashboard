@@ -1,37 +1,88 @@
 "use client";
 
 import api from "@/services/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useAI = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // FETCH HISTORY
+  useEffect(() => {
+    fetchHistory();
+  }, []);
+
+  const fetchHistory = async () => {
+    try {
+      const res = await api.get("/ai/history");
+
+      setMessages(res.data.chats);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // ASK AI
   const askAI = async (prompt) => {
+    if (!prompt.trim()) return;
+
     setLoading(true);
 
-    // user message
-    setMessages((prev) => [...prev, { role: "user", text: prompt }]);
+    // USER MESSAGE
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: "user",
+        text: prompt,
+      },
+    ]);
 
     try {
-      const res = await api.post("/ai/ask", { prompt });
+      const res = await api.post("/ai/ask", {
+        prompt,
+      });
 
       const aiText = res.data.result;
 
-      setMessages((prev) => [...prev, { role: "ai", text: aiText }]);
+      // AI MESSAGE
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "ai",
+          text: aiText,
+        },
+      ]);
     } catch (err) {
       console.log(err);
 
       setMessages((prev) => [
         ...prev,
-        { role: "ai", text: "AI error occurred" },
+        {
+          role: "ai",
+          text: "AI error occurred",
+        },
       ]);
     } finally {
       setLoading(false);
     }
   };
 
-  return { messages, loading, askAI };
+  // CLEAR CHAT
+  const clearMessages = async () => {
+    try {
+      await api.delete("/ai/clear");
+
+      setMessages([]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return {
+    messages,
+    loading,
+    askAI,
+    clearMessages,
+  };
 };
 
 export default useAI;
