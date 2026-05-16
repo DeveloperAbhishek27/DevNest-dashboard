@@ -132,7 +132,7 @@ const DashboardSidebar = ({
       overflow-hidden
       border-2
       border-dotted
-      border-brand/70
+      border-brand/70 bg-white/70
      dark:bg-white/10 shadow-2xl
       rounded-full
       flex-shrink-0
@@ -174,7 +174,7 @@ const DashboardSidebar = ({
             {/* USER INFO */}
             {!collapsed && (
               <div>
-                <h1 className="text-lg font-black text-brand dark:text-white tracking-wide">
+                <h1 className="text-xl font-black text-brand dark:text-white tracking-wide">
                   {user?.name}
                 </h1>
 
@@ -229,7 +229,7 @@ const DashboardSidebar = ({
                       lg:hidden
                       flex 
                       items-center
-                      justify-center absolute -top-10 right-0
+                      justify-center absolute -top-16 -right-2
                       w-10
                       h-10
                       rounded-xl
@@ -254,7 +254,7 @@ const DashboardSidebar = ({
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="mt-4 space-y-4"
+            className=" sm:mt-8 mt-14 space-y-4"
           >
             {navLinks.map((item, index) => (
               <motion.div
