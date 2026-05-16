@@ -30,7 +30,13 @@ const DashboardOverview = () => {
   const quickLinks = [
     {
       title: "Profile",
-      icon: <User size={20} className="text-blue-500 dark:text-blue-400" />,
+      icon: (
+        <User
+          size={20}
+          strokeWidth={3}
+          className="text-blue-500 dark:text-blue-400"
+        />
+      ),
       href: "/profile",
       color: "from-blue-500/20 to-blue-500/5",
     },
@@ -40,6 +46,7 @@ const DashboardOverview = () => {
       icon: (
         <NotebookPen
           size={20}
+          strokeWidth={3}
           className="text-yellow-500 dark:text-yellow-400"
         />
       ),
@@ -49,14 +56,27 @@ const DashboardOverview = () => {
 
     {
       title: "Mini Games",
-      icon: <Gamepad2 size={20} className="text-pink-500 dark:text-pink-400" />,
+
+      icon: (
+        <Gamepad2
+          strokeWidth={3}
+          size={20}
+          className="text-pink-500 dark:text-pink-400"
+        />
+      ),
       href: "/games",
       color: "from-pink-500/20 to-pink-500/5",
     },
 
     {
       title: "Dev AI",
-      icon: <Bot size={20} className="text-green-500 dark:text-green-400" />,
+      icon: (
+        <Bot
+          size={20}
+          strokeWidth={3}
+          className="text-green-500 dark:text-green-400"
+        />
+      ),
       href: "/dev-ai",
       color: "from-green-500/20 to-green-500/5",
     },
