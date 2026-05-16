@@ -29,15 +29,6 @@ const DashboardOverview = () => {
 
   const quickLinks = [
     {
-      title: "Dashboard",
-      icon: (
-        <LayoutDashboard size={20} className="text-brand dark:text-brand" />
-      ),
-      href: "/dashboard",
-      color: "from-brand/20 to-brand/5",
-    },
-
-    {
       title: "Profile",
       icon: <User size={20} className="text-blue-500 dark:text-blue-400" />,
       href: "/profile",
@@ -93,13 +84,13 @@ const DashboardOverview = () => {
       />
 
       {/* HEADER */}
-      <div className="py-10 relative z-10">
+      <div className="pb-10 pt-5 relative z-10">
         <div>
           <h1
             className="
-              text-3xl
-              sm:text-4xl
-              lg:text-5xl
+              text-4xl
+              
+              sm:text-5xl
               sm:flex
               gap-6
               fade-in-up
@@ -112,7 +103,7 @@ const DashboardOverview = () => {
             "
           >
             Welcome Back,
-            <span className="block mt-1 text-brand text-4xl font-extrabold uppercase">
+            <span className="block mt-1 text-brand sm:text-4xl text-5xl font-black uppercase">
               {user?.name}
             </span>
           </h1>
@@ -148,9 +139,9 @@ const DashboardOverview = () => {
         <div
           className="
             grid
-            grid-cols-5
-            sm:grid-cols-3
-            lg:grid-cols-5
+            grid-cols-4
+            sm:grid-cols-4
+            lg:grid-cols-4
             gap-4
           "
         >
@@ -180,8 +171,8 @@ const DashboardOverview = () => {
         bg-white
         dark:bg-white/5
 
-        px-3
-        py-2.5
+        py-2 px-2
+        sm:py-3 sm:px-4
 
         shadow-md
 
@@ -200,10 +191,9 @@ const DashboardOverview = () => {
           relative
           z-10
 
-          w-8
-          h-8
-          sm:h-11
-          sm:w-11
+          w-14
+          h-14
+         
 
           rounded-xl
 
