@@ -174,11 +174,11 @@ const DashboardSidebar = ({
             {/* USER INFO */}
             {!collapsed && (
               <div>
-                <h1 className="text-xl font-black text-brand dark:text-white tracking-wide">
+                <h1 className=" text-2xl font-extrabold sm:text-xl  text-brand dark:text-white tracking-wide">
                   {user?.name}
                 </h1>
 
-                <p className="text-xs mt-1 text-gray-700 dark:text-gray-400 font-medium">
+                <p className="text-sm mt-1 text-gray-700 dark:text-gray-400 font-medium">
                   Welcome back
                 </p>
               </div>
