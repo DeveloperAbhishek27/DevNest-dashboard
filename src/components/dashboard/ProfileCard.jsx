@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { User2, Mail, Phone, Globe, Pencil } from "lucide-react";
+import { User2, Eye, Mail, Phone, Globe, Pencil } from "lucide-react";
+import ProfileImageModal from "./ProfileImageModal";
 import EditProfileModal from "./EditProfileModal";
 import { useAuth } from "@/context/AuthContext";
 
 const ProfileCard = ({ setUser }) => {
   const { user } = useAuth();
   const [openEdit, setOpenEdit] = useState(false);
+  const [openImage, setOpenImage] = useState(false);
 
   return (
     <>
@@ -49,18 +51,69 @@ const ProfileCard = ({ setUser }) => {
 
         {/* HEADER */}
         <div className="flex items-center gap-5 sm:gap-10">
-          <div
-            className="
-              p-5
-              rounded-3xl
-              bg-gradient-to-br from-brand/20 to-brand/5
-              flex items-center justify-center
-              text-brand
-              text-3xl font-black
-              shadow-inner
-            "
-          >
-            {user?.name?.charAt(0)?.toUpperCase()}
+          <div className="relative">
+            <div
+              className="
+      w-24 p-2 h-24
+      sm:w-32 sm:h-32
+      overflow-hidden
+      rounded-full
+      bg-gradient-to-br
+      from-brand/20
+      to-brand/5
+      dark:bg-white/15
+      flex border-4 border-brand/10
+      items-center
+      justify-center
+      text-brand
+      text-3xl
+      font-black
+      shadow-inner
+    "
+            >
+              {user?.profilePicture ? (
+                <img
+                  src={user.profilePicture}
+                  alt="profile"
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <span>{user?.name?.charAt(0)?.toUpperCase()}</span>
+              )}
+            </div>
+
+            {/* VIEW BUTTON */}
+            {user?.profilePicture && (
+              <button
+                onClick={() => setOpenImage(true)}
+                className="
+        absolute
+        bottom-1
+        right-1
+
+        w-8
+        h-8
+
+        rounded-full
+
+        bg-brand
+        text-white
+
+        flex
+        items-center
+        justify-center
+
+        shadow-lg
+
+        hover:scale-110
+        active:scale-95
+
+        transition-all
+      "
+              >
+                <Eye size={16} />
+              </button>
+            )}
           </div>
 
           <div>
@@ -114,6 +167,11 @@ const ProfileCard = ({ setUser }) => {
         setOpen={setOpenEdit}
         user={user}
         setUser={setUser}
+      />
+      <ProfileImageModal
+        open={openImage}
+        setOpen={setOpenImage}
+        image={user?.profilePicture}
       />
     </>
   );

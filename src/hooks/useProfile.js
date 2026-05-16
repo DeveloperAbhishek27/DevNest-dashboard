@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
+
 import api from "@/services/api";
 
 let globalUser = null;
+
+if (typeof window !== "undefined") {
+  const storedUser = localStorage.getItem("user");
+
+  if (storedUser) {
+    globalUser = JSON.parse(storedUser);
+  }
+}
+
 let listeners = [];
 
 const useProfile = () => {
@@ -9,6 +19,8 @@ const useProfile = () => {
 
   const setUser = (data) => {
     globalUser = data;
+
+    localStorage.setItem("user", JSON.stringify(data));
 
     listeners.forEach((cb) => cb(data));
   };
@@ -18,6 +30,8 @@ const useProfile = () => {
       const res = await api.get("/auth/profile");
 
       globalUser = res.data.user;
+
+      localStorage.setItem("user", JSON.stringify(globalUser));
 
       setUserState(globalUser);
 

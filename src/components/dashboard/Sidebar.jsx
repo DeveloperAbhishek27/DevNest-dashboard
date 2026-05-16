@@ -115,38 +115,75 @@ const DashboardSidebar = ({
       >
         {/* TOP */}
         <div className="relative z-10">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="
-                        w-12
-                        h-12
+          <div
+            className={`
+    flex
+    items-center
+    transition-all
+    duration-300
 
-                        rounded-full
-
-                        border-2
-                        border-dotted
-                        border-brand
-
-                        bg-black/5
-                        dark:bg-white/10
-
-                        backdrop-blur-xl
-
-                        flex
-                        items-center
-                        justify-center
-
-                        text-base
-                        font-bold
-
-                        text-black
-                        dark:text-white
-
-                        shadow-lg
-                      "
+    ${collapsed ? "justify-center" : "gap-3"}
+  `}
           >
-            {user?.name?.charAt(0)?.toUpperCase() || "U"}
-          </motion.div>
+            {/* PROFILE IMAGE */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className={`
+      overflow-hidden
+      border-2
+      border-dotted
+      border-brand/70
+     dark:bg-white/10 shadow-2xl
+      rounded-full
+      flex-shrink-0
+
+      ${collapsed ? "w-12 h-12" : "w-20 h-20"}
+    `}
+            >
+              {user?.profilePicture ? (
+                <img
+                  src={user.profilePicture}
+                  alt="profile"
+                  className="
+          w-full
+          h-full
+          object-cover
+        "
+                />
+              ) : (
+                <div
+                  className="
+          w-full
+          h-full
+          bg-black/5
+          dark:bg-white/10
+          flex
+          items-center
+          justify-center
+          text-black
+          dark:text-white
+          font-bold
+          text-xl
+        "
+                >
+                  {user?.name?.charAt(0)?.toUpperCase() || "U"}
+                </div>
+              )}
+            </motion.div>
+
+            {/* USER INFO */}
+            {!collapsed && (
+              <div>
+                <h1 className="text-lg font-black text-brand dark:text-white tracking-wide">
+                  {user?.name}
+                </h1>
+
+                <p className="text-xs mt-1 text-gray-700 dark:text-gray-400 font-medium">
+                  Welcome back
+                </p>
+              </div>
+            )}
+          </div>
           {/* HEADER */}
           <div
             className={`flex items-center ${
@@ -182,18 +219,6 @@ const DashboardSidebar = ({
                 />
 
                 <div className="flex relative items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div>
-                      <h1 className="text-lg font-black text-brand dark:text-white tracking-wide">
-                        {user?.name}
-                      </h1>
-
-                      <p className="text-xs mt-1 text-gray-700 dark:text-gray-400 font-medium">
-                        Welcome back
-                      </p>
-                    </div>
-                  </div>
-
                   {/* CLOSE BUTTON */}
                   <button
                     onClick={() => {
