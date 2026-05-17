@@ -10,6 +10,7 @@ import DashboardHeader from "@/components/dashboard/DashboardHeader";
 
 import DashboardSidebar from "@/components/dashboard/Sidebar";
 import { useAuth } from "@/context/AuthContext";
+import { errorToast, successToast } from "@/components/alert/notify";
 
 export default function DashboardLayout({ children }) {
   const router = useRouter();
@@ -30,6 +31,46 @@ export default function DashboardLayout({ children }) {
     router.push("/login");
   };
 
+  const handleDeleteAccount = async (email) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/delete-account`,
+        {
+          method: "DELETE",
+
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+
+          body: JSON.stringify({
+            email,
+          }),
+        },
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        localStorage.removeItem("token");
+
+        logout();
+
+        successToast(data.message);
+
+        router.push("/register");
+      } else {
+        errorToast(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+
+      errorToast("Something went wrong");
+    }
+  };
+
   return (
     <ProtectedRoute>
       <section className="min-h-screen bg-white dark:bg-homeBg">
@@ -40,6 +81,7 @@ export default function DashboardLayout({ children }) {
           setCollapsed={setCollapsed}
           open={open}
           setOpen={setOpen}
+          handleDeleteAccount={handleDeleteAccount}
         />
 
         {/* MAIN */}

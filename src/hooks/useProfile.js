@@ -28,13 +28,9 @@ const useProfile = () => {
   const fetchProfile = async () => {
     try {
       const res = await api.get("/auth/profile");
-
       globalUser = res.data.user;
-
       localStorage.setItem("user", JSON.stringify(globalUser));
-
       setUserState(globalUser);
-
       listeners.forEach((cb) => cb(globalUser));
     } catch (err) {
       console.log(err);

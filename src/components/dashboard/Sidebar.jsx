@@ -12,25 +12,28 @@ import {
   NotebookPen,
   Gamepad2,
   Bot,
-  LogOut,
+  Settings,
   X,
 } from "lucide-react";
 
+import { useState } from "react";
 import { fadeInUp, staggerContainer } from "@/animations";
 
 import { useAuth } from "@/context/AuthContext";
+import SettingsDropdown from "./SettingsDropdown";
 
 const DashboardSidebar = ({
   handleLogout,
   setCollapsed,
   collapsed,
+  handleDeleteAccount,
   open,
   setOpen,
 }) => {
   const { user } = useAuth();
 
   const pathname = usePathname();
-
+  const [showSettings, setShowSettings] = useState(false);
   const navLinks = [
     {
       title: "Dashboard",
@@ -52,7 +55,7 @@ const DashboardSidebar = ({
     {
       title: "Mini Games",
       icon: <Gamepad2 size={20} />,
-      href: "/games",
+      href: "/games/tic-tac-toe",
     },
     {
       title: "Dev AI",
@@ -101,8 +104,7 @@ const DashboardSidebar = ({
           flex
           flex-col
           justify-between
-
-          overflow-hidden
+            overflow-visible
 
        
 
@@ -362,38 +364,56 @@ const DashboardSidebar = ({
             ))}
           </motion.div>
         </div>
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={handleLogout}
-          className={`
-            flex
-            items-center
-            justify-center
+        <div className="relative">
+          {/* SETTINGS BUTTON */}
+          <motion.button
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowSettings((prev) => !prev);
+            }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className={`
+      flex
+      items-center
+      justify-center
 
-            rounded-xl
+      rounded-2xl
 
-            bg-homeBg
-            dark:bg-brand/30
+      bg-homeBg
+      dark:bg-white/10
 
-            hover:bg-brand
+      hover:bg-brand
 
-            border
-            border-red-500/20
+      border
+      border-white/10
 
-            text-white
-            font-medium
+      text-white
+      font-medium
 
-            transition-all
-            duration-300
+      transition-all
+      duration-300
 
-            ${collapsed ? "w-12 h-12 mx-auto" : "w-full gap-3 py-3"}
-          `}
-        >
-          <LogOut size={20} />
+      backdrop-blur-xl
 
-          {!collapsed && <span>Logout</span>}
-        </motion.button>
+      ${collapsed ? "w-12 h-12 mx-auto" : "w-full gap-3 py-3 px-4"}
+    `}
+          >
+            <Settings size={20} />
+
+            {!collapsed && <span>Settings</span>}
+          </motion.button>
+
+          {showSettings && (
+            <SettingsDropdown
+              setShowSettings={setShowSettings}
+              showSettings={showSettings}
+              handleDeleteAccount={handleDeleteAccount}
+              collapsed={collapsed}
+              handleLogout={handleLogout}
+            />
+          )}
+        </div>
       </motion.aside>
     </>
   );

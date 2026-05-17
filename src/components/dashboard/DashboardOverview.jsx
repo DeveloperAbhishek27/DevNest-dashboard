@@ -111,7 +111,7 @@ const DashboardOverview = () => {
              text-5xl
               sm:flex
               gap-6
-              fade-in-up
+              fade-in-up font-heading text-stroke  tracking-[2px]
               flex-row
               lg:items-center
               lg:justify-start
@@ -121,7 +121,7 @@ const DashboardOverview = () => {
             "
           >
             Welcome Back,
-            <span className="block mt-1 text-brand sm:text-4xl text-6xl font-black uppercase">
+            <span className="block sm:mt-0 text-brand mt-7 tracking-[2px]  text-6xl font-black uppercase">
               {user?.name}
             </span>
           </h1>

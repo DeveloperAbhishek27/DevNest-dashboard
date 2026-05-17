@@ -5,8 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { ArrowRight, ShieldCheck, LayoutDashboard } from "lucide-react";
-
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 const HeroSection = () => {
   return (
@@ -102,14 +101,13 @@ const HeroSection = () => {
     mt-4
 
     text-[3.5rem]
-    sm:text-5xl
-    md:text-6xl
+    sm:text-6xl
     lg:text-7xl
- drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)]
-     font-black
+    drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)]
+     font-black font-heading
 
-    leading-[1.25]
-    tracking-[-2px]
+    leading-[1.55]
+    tracking-[1px] text-stroke
 
 
     fade-in-up

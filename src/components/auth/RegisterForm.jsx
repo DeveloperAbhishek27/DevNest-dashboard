@@ -196,7 +196,7 @@ const RegisterForm = () => {
       <main className="w-full grid lg:pt-0 pt-14 grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* LEFT CONTENT */}
         <div className="text-white pt-10">
-          <h1 className="text-5xl fade-in-up lg:text-7xl font-black leading-tight tracking-tight">
+          <h1 className="text-5xl fade-in-up font-heading text-stroke  tracking-[1px] lg:text-7xl font-black leading-tight tracking-tight">
             Manage Your
             <span className="block text-brand">Workspace.</span>
           </h1>

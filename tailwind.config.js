@@ -11,6 +11,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        heading: ["var(--font-space)"], // 👈 Space Grotesk
+        body: ["var(--font-inter)"],
+      },
       colors: {
         brand: "#ff6912",
         shadowblue: "#290f03",

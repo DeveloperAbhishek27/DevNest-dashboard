@@ -106,7 +106,7 @@ const LoginForm = () => {
       </Link>
       <main className="w-full grid  lg:pt-0 pt-14 grid-cols-1 lg:grid-cols-2 gap-16 justify-center items-center">
         <div className="text-white">
-          <h1 className="text-5xl fade-in-up lg:text-7xl font-black leading-tight tracking-tight">
+          <h1 className="text-5xl font-heading text-stroke  tracking-[1px]  fade-in-up lg:text-7xl font-black leading-tight ">
             Access Your
             <span className="block text-brand">Dashboard.</span>
           </h1>

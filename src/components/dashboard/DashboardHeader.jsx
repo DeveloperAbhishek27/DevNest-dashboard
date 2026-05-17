@@ -3,16 +3,12 @@
 import { motion } from "framer-motion";
 
 import { LogOut, PanelLeftClose, PanelLeftOpen } from "lucide-react";
-import { fadeInUp, staggerContainer } from "@/animations";
 import ThemeToggle from "../ui/ThemeToggle";
 
 import { useAuth } from "@/context/AuthContext";
 
 const DashboardHeader = ({ handleLogout, collapsed, setCollapsed }) => {
   const { user } = useAuth();
-
-  const initial = user?.name?.charAt(0)?.toUpperCase() || "U";
-
   return (
     <header
       className="
